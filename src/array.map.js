@@ -1,4 +1,4 @@
-const { pluckProperty, multiplyBy } = require('./functions-return-functions')
+// const { pluckProperty, multiplyBy } = require('./functions-return-functions')
 
 function doubleNumbers(arr){
   const result = []

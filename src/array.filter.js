@@ -1,4 +1,4 @@
-const { notDivisibleBy, scoreBelow,  startsWith} = require('./functions-return-functions')
+// const { notDivisibleBy, scoreBelow,  startsWith} = require('./functions-return-functions')
 
 function onlyOdds(arr){
   const result = []

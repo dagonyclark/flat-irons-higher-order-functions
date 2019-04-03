@@ -1,4 +1,4 @@
-const { groupByProperty } = require('./functions-return-functions')
+// const { groupByProperty } = require('./functions-return-functions')
 
 function sumNumbers(arr){
   let result = 0
