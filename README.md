@@ -1,12 +1,10 @@
-# Lesson Workspace Higher Order Functions
+# map and filter over arrays
 
 ## Objectives
 
 * Use map to transform an array
 * Use filter to transform an array
-* Use reduce to accumulate an array
-* Use functions that return functions to abstract functionality
-* Define higher order functions
+* Explain how filter and map abstract over arrays.
 
 ## Using this repo
 
@@ -28,7 +26,7 @@ The tests are all passing, refactor the code without breaking the tests.
 
 In `array.map.js`
 
-1. Study the three functions in the file and determine what the similarities and differences are between them.
+1. Study the `doubleNumbers`, `pluckName`, and `mailMerge` functions in the file, and determine what the similarities and differences are between them.
 1. For each function, create a function that maps the change of each element of the given array to the elements of the output array. See example below
 
 ```javascript
@@ -52,7 +50,7 @@ function addOne(array){
 addOne([ 1,2,3,4,5,6 ]) // [ 2,3,4,5,6,7 ]
 ```
 
-1. Create a new function named `map`. And use it refactor `doubleNumbers`, `pluckName`, and `mailMerge`.
+1. Create a new function named `map`. And use it refactor `doubleNumbers`, `pluckName`, and `mailMerge`. See example below.
 
 ```javascript
 
@@ -82,39 +80,61 @@ addOne([ 1,2,3,4,5,6 ]) // [ 2,3,4,5,6,7 ]
 
 In `array.filter.js`
 
-* Create a function that checks to see if each value of the array should be pushed into `result`.
-* Study the three main functions and determine what the similarities and differences are between them
-* Create a function named `filter` that abstracts the looping structure, it has as arguments, an array and a function
-* Add the `filter` function to all main functions
-* Refactor using `array.filter`, bring in helper functions as anonymous functions
+1. Study the `onlyOdds`, `hasBelow30000CareerPoints`, and `firstNameStartsWithA` functions in the file, and determine what the similarities and differences are between them.
+1. For each function, create a function that maps the change of each element of the given array to the elements of the output array. See example below
 
-### How do you use reduce to accumulate an array?
+```javascript
+function isLessThan10(value){
+  return value < 10
+}
 
-In `array.reduce.js`
+function keepLessThan10(array){
+  const result = []
 
-* Create a function to transform each element for each function
-* Study the three main functions and determine what the similarities and differences are between them
-* Create a function named `reduce` that abstracts the looping structure, it has as arguments, an array, a function, and a startign value
-* Add `reduce` function to all main functions
-* Refactor using `array.reduce`, bring in helper functions as anonymous functions
+  for(const e of array){
+    // abstract the transformation
+    // instead of
+    //   if( e < 10 )
+    // use the following
+    if( isLessThan10(e) ){
+      result.push( e )
+    }
+  }
+  return result
+}
 
-### How do you use a function that returns a function to abstract functionality?
+keepLessThan10([ 5,7,8,9,10,11,12,13  ]) // [ 5,7,8,9 ]
+```
 
-In `array.map.js`
+1. Create a new function named `map`. And use it refactor `onlyOdds`, `hasBelow30000CareerPoints`, and `firstNameStartsWithA`. See example below.
 
-* From `functions-return-functions` use `multiplyBy` to abstract behavior on `doubleNumbers`
-* From `functions-return-functions` use `pluckProperty` to abstract behavior on `pluckName`
+```javascript
 
-In `array.filter.js`
+// add this to `array.filter.js` and complete the code.
+function filter(array, fn){
+  // add code here
+}
 
-* From `functions-return-functions` use `notDivisibleBy` to abstract behavior on `onlyOdds`
-* In `functions-return-functions`, create a function named `scoreBelow` to abstract score number. Use it to abstract behavior in `hasBelow30000CareerPoints`
-* In `functions-return-functions`, create a function named `startsWith` to abstract starting letter. Use it to abstract behavior in `firstNameStartsWithA`
+// existing code show to show how to use `map`
+function isLessThan10(value){
+  return value < 10
+}
 
-In `array.reduce.js`
+function keepLessThan10(array){
+  return filter(array, isLessThan10)
+}
 
-* rom `functions-return-functions` use `groupByProperty` to abstract behavior on `groupByUniversity`
+keepLessThan10([ 1,2,3,4,5,6 ]) // [ 2,3,4,5,6,7 ]
 
-### What is a higher order function?
+```
 
-* Turn you your neighbor and define what a higher order function is
+1. Refactor using `Array.prototype.filter()`, you can find the documentation here, https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+ * What arguments does the `.filter()` method take?
+ * Does it make a difference if `.filter()` receives a named function versus an anonymous function? When would you choose to use which one?
+
+
+### How do `map` and `filter` abstract over arrays?
+
+* Turn you your neighbor and answer the follwing:
+  * What is abstraction? and why is is useful?
+  * How does `map` and `filter` use abstraction?
